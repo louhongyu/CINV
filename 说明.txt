@@ -1,0 +1,5 @@
+app.py是运行文件，
+app中需要调用的ann_model.pkl是最后的ann模型文件；调用的scaler_numeric11.pkl是数据标准化模型文件。
+X_train不可以删除。
+templates文件夹中是所有的前端页面文件
+所有依赖包在requirements.txt中。
