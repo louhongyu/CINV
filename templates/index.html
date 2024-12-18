@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CINV Risk Assessment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .form-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .info-text {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CINV Risk Assessment System</h1>
+        <p>Chemotherapy-Induced Nausea and Vomiting Risk Prediction</p>
+    </div>
+    
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <div class="form-section">
+                <!-- Personal Information -->
+                <div>
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label>Gender:</label>
+                        <select name="性别">
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Age:</label>
+                        <input type="number" name="年龄" required step="any" placeholder="0-18 years">
+                    </div>
+                    <div class="form-group">
+                        <label>Height (cm):</label>
+                        <input type="number" name="身高" required step="any" placeholder="45-180 cm">
+                    </div>
+                </div>
+
+                <!-- Treatment Information -->
+                <div>
+                    <h3>Treatment Information</h3>
+                    <div class="form-group">
+                        <label>Days of Chemotherapy:</label>
+                        <input type="number" name="化疗天数" required placeholder="1-30 days">
+                    </div>
+                    <div class="form-group">
+                        <label>Chemotherapy Regimen:</label>
+                        <select name="化疗方案">
+                            <option value="5">Cisplatin-based</option>
+                            <option value="6">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <!-- CINV Status -->
+                <div>
+                    <h3>CINV Status</h3>
+                    <div class="form-group">
+                        <label>Anticipatory CINV:</label>
+                        <select name="预期性二分类">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Acute CINV:</label>
+                        <select name="急性二分类">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>CINV Control Effectiveness:</label>
+                        <select name="恶心呕吐的控制效果">
+                            <option value="1">Effective</option>
+                            <option value="0">Not Effective</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div>
+                    <h3>Additional Information</h3>
+                    <div class="form-group">
+                        <label>Number of Recreational Activities:</label>
+                        <input type="number" name="娱乐项目数" required placeholder="0-10">
+                    </div>
+                    <div class="form-group">
+                        <label>Reading and Painting:</label>
+                        <select name="看书绘画">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Expectation of CINV:</label>
+                        <select name="对恶心呕吐的预期">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Submit Assessment</button>
+        </form>
+        <p class="info-text">
+            Please fill in all fields accurately for the best prediction results.
+        </p>
+    </div>
+</body>
+</html>

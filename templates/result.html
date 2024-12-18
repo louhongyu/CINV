@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .shap-plot {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .risk-info {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Your CINV Risk Assessment Results</h1>
+        
+        <div class="risk-info">
+            <h2>Prediction Results:</h2>
+            <p>Risk Level: {{ "High Risk" if risk_class == "高风险" else "Low Risk" }}</p>
+            <p>Probability: {{ risk_probability }}%</p>
+        </div>
+
+        <div class="shap-plot">
+            <h2>Feature Impact Analysis:</h2>
+            <img src="data:image/png;base64,{{ shap_plot }}" 
+                 alt="SHAP Force Plot" 
+                 style="width: 100%;">
+            <p style="font-size: 0.9em; color: #666;">
+                Note: Red indicates increased risk, blue indicates decreased risk. 
+                The length of each bar represents the feature's impact magnitude.
+            </p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <a href="/" class="button">Back to Assessment</a>
+        </div>
+    </div>
+</body>
+</html>
